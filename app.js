@@ -1,25 +1,27 @@
-const express = require ('express')
+const express = require('express')
 const app = express()
 const port = 3000
 const User = require('./routes/userconnect/user')
-const Farm = require('./routes/farm/farm')
+const monsterRouter = require('./routes/monsterRouter')
+const assetsRouter = require('./routes/assetsRouter')
+const marketRouter = require('./routes/marketRouter')
 
-
-app.use(express.urlencoded(({
-    extended :false
-})))
-
-app.get('/',(req,res)=> {
-    // res.send('oh my farm')
-    console.log (req.body,'dari app.js')
-    res.render('home.ejs')
-})
+app.use(express.urlencoded({
+    extended: false
+}))
 
 app.use('/users',User) 
-app.use('/farm',Farm)
+app.use('/explore',monsterRouter)
+app.use('/assets',assetsRouter)
+app.use('/market',marketRouter)
 
-
-
-app.listen(port,()=> {
-    console.log (`See magc happened in port : ${port}`)
+app.use('/index',(req,res)=>{
+    res.render('index.ejs')
+})
+app.use('/*',(req,res)=>{
+    res.send('404 not found')
+})
+app.listen(port,()=>{
+    console.log("listening in port 3000");
+    
 })

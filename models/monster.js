@@ -4,9 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     monsterName: DataTypes.STRING,
     attribute: DataTypes.STRING,
     location: DataTypes.STRING,
-    dropItem: DataTypes.STRING
+    ItemId: DataTypes.INTEGER
   }, {});
   Monster.associate = function(models) {
+    Monster.belongsTo(models.Item,{
+      foreignKey: 'ItemId'
+    })
     // associations can be defined here
   };
   return Monster;

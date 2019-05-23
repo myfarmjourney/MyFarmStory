@@ -7,7 +7,13 @@ module.exports = (sequelize, DataTypes) => {
     kategori: DataTypes.STRING
   }, {});
   Item.associate = function(models) {
-    // associations can be defined here
+      Item.hasMany(models.Monster,{
+        foreignKey:'ItemId'
+      })
+      Item.belongsToMany(models.User,{
+        through : models.Asset,
+        foreignKey: 'ItemId'
+      })
   };
   return Item;
 };
