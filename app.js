@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const monsterRouter = require('./routes/monsterRouter')
 const assetsRouter = require('./routes/assetsRouter')
+const marketRouter = require('./routes/marketRouter')
 
 app.use(express.urlencoded({
     extended: false
@@ -10,6 +11,7 @@ app.use(express.urlencoded({
 
 app.use('/explore',monsterRouter)
 app.use('/assets',assetsRouter)
+app.use('/market',marketRouter)
 
 app.use('/index',(req,res)=>{
     res.render('index.ejs')
