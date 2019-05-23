@@ -18,7 +18,7 @@ class assetsController {
 
                 console.log ('sampai sini')
                 console.log (assets.Items.length)
-                res.render('assetTable.ejs', { asset: assets.Items })
+                res.render('assetTable.ejs', { datas: assets.Items })
                 // res.send(assets)
             })
             .catch((err) => {

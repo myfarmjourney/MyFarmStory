@@ -6,15 +6,9 @@ const monsterRouter = require('./routes/monsterRouter')
 const assetsRouter = require('./routes/assetsRouter')
 const marketRouter = require('./routes/marketRouter')
 const session = require('express-session')
+const {checkSession} = require('./middleware/index')
 
 app.use(session({secret: 'bertanisetiaphari', cookie : {}}))
-
-app.use('/*',(req,res,next)=> {
-    if (req.session.user === undefined) {
-        req.session.user = {}
-    }
-    next()
-})
 
 app.use(express.urlencoded({
     extended: false
@@ -22,9 +16,9 @@ app.use(express.urlencoded({
 
 app.use('/users',User) 
 //dikasih kondisi login 
-app.use('/explore',monsterRouter)
-app.use('/assets',assetsRouter)
-app.use('/market',marketRouter)
+app.use('/assets',checkSession,assetsRouter)
+app.use('/explore',checkSession,monsterRouter)
+app.use('/market',checkSession,marketRouter)
 
 app.use('/index',(req,res)=>{
     res.render('index.ejs')
