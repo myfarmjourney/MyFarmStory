@@ -14,8 +14,11 @@ app.use(express.urlencoded({
     extended: false
 }))
 
+app.use ('/',(req,res)=> {
+    res.render("welcomePage.ejs")
+})
+
 app.use('/users',User) 
-//dikasih kondisi login 
 app.use('/assets',checkSession,assetsRouter)
 app.use('/explore',checkSession,monsterRouter)
 app.use('/market',checkSession,marketRouter)
