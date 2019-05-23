@@ -5,6 +5,8 @@ const User = require('./routes/userconnect/user')
 const monsterRouter = require('./routes/monsterRouter')
 const assetsRouter = require('./routes/assetsRouter')
 const marketRouter = require('./routes/marketRouter')
+const farmRouter = require('./routes/farmRouter')
+
 const session = require('express-session')
 const {checkSession} = require('./middleware/index')
 
@@ -15,10 +17,11 @@ app.use(express.urlencoded({
 }))
 
 app.use('/users',User) 
-//dikasih kondisi login 
+
 app.use('/assets',checkSession,assetsRouter)
 app.use('/explore',checkSession,monsterRouter)
 app.use('/market',checkSession,marketRouter)
+app.use('/myfarm',checkSession,farmRouter)
 
 app.use('/index',(req,res)=>{
     res.render('index.ejs')

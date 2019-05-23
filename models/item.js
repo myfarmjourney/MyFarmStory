@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
         through : models.Asset,
         foreignKey: 'ItemId'
       })
+      Item.hasMany(models.Market,{
+        foreignKey:'ItemId'
+      })
+      Item.hasMany(models.Farm,{
+        foreignKey:'ItemId'
+      })
   };
   return Item;
 };

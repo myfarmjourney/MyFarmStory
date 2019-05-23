@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MyFarmStory</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+    <%- include ./partials/styleHeader%>
+</head>
+
+<body>
+	 <%- include ./partials/navbar %>
+    <div class="container">
+     <h1> Let's plant My Farm with fruit and vegetable</h1>
+    <form action="" method="post">
+        <select class="form-control form-control-lg" name="selectitem">
+        <%if(items != null){%>
+    <%items.Items.forEach(item => { %>
+        <option value="<%=item.id%>"><%=item.itemName%></option>
+    <% });%>
+    <%}else{%>
+        <option value="null">No Items Available</option>
+    <%}%>
+    </select>
+     <button type="submit" class="btn btn-primary">Plant</button>
+   
+    </form>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Current Plant</th>
+                <th scope="col">Category</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+                <%farms.forEach(data => { %>
+                <tr>
+                    <th scope="row"><%= data.id%></th>
+                        <td><%= data.Item.itemName%></td>
+                        <td><%= data.Item.kategori%></td>
+                        <td><a href="/myfarm/water/<%= data.id%>" class="btn btn-primary">Watery</a></td>
+                    </tr>
+                    <%})%>
+                    
+                        </tbody>
+                    </table>
+  </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+</body>
+
+</html>
