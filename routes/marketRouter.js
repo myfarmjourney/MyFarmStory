@@ -1,9 +1,8 @@
 const express = require('express')
 const marketRouter = express.Router()
-const assetsController = require('../controller/assetsController')
+const marketController = require('../controller/marketController')
 
-marketRouter.get('/',assetsController.showAssets)
-marketRouter.get('/add',assetsController.createUser)
-marketRouter.get('/:id/sell',assetsController.sellAsset) //id item
+marketRouter.get('/',marketController.showMarket)
+marketRouter.get('/:id/buy',marketController.buyItem) //id market
 
 module.exports = marketRouter
