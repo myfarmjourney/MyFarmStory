@@ -1,34 +1,25 @@
 const { Asset, Item, User, Market } = require('../models')
 let { calculateMoney } = require('../helper/calculateMoney')
+const session =require('express-session')
 
 class assetsController {
-    static createUser(req, res) {
-        User.create({
-            name: 'viuty',
-            birthday: '06-12-1995',
-            username: 'tviuty',
-            password: 'viuty1234',
-            email: 'tviuty@gmail.com',
-            money: 3000
-        })
-            .then(() => {
-                res.send("success")
-            })
-            .catch((err) => {
-                res.send(err)
-            })
-    }
     static showAssets(req, res) {
+        console.log ('masuk sinii di aset')
+        // res.send('ahaaa')
+        console.log (req.session.user, 'ini username dari sesion diaset')
         User.findOne({
             where: {
-                id: 1 //session id
+                // id :5
+                username : req.session.user.username //session id
             },
             include: [Item]
         })
             .then((assets) => {
-                res.render('assetTable.ejs', { 
-                    datas: assets.Items
-                })
+
+                console.log ('sampai sini')
+                console.log (assets.Items.length)
+                res.render('assetTable.ejs', { asset: assets.Items })
+                // res.send(assets)
             })
             .catch((err) => {
                 res.send(err)
@@ -39,7 +30,7 @@ class assetsController {
         let id = req.params.id
         User.findOne({
             where: {
-                id: 1 //session user id
+                id: req.session.user.id
             },
             include: [{
                 model: Item,

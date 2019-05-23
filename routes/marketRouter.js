@@ -2,7 +2,12 @@ const express = require('express')
 const marketRouter = express.Router()
 const marketController = require('../controller/marketController')
 
-marketRouter.get('/',marketController.showMarket)
+marketRouter.get('/',assetsController.showAssets)
+// marketRouter.get('/add',assetsController.createUser)
+marketRouter.get('/:id/sell',assetsController.sellAsset) //id item
+
+marketRouter.get('/',marketController.showMarket) //apakah ini ?? //masih erort tadi
 marketRouter.get('/:id/buy',marketController.buyItem) //id market
+
 
 module.exports = marketRouter
