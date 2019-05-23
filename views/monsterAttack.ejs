@@ -2,29 +2,38 @@
 <html>
 
 <head>
+    
+        <style>
+            body {
+                background-image:url("/images/img_14_2.jpg") ;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position-y: 20%;
+                background-position-x: 75%;
+            }
+        </style>
     <title>MyFarmStory</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
-  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
     <%- include ./partials/styleHeader%>
 </head>
 
 <body>
-	 <%- include ./partials/navbar %>
+	 <%- include ./partials/navBarUser %>
     <header class="header"> 
         <div class="jumbotron jumbotron-fluid">
          <div class="container">
             <h1 class="display-4">Monster <%=monster. monsterName%> attacking you! </h1>
              <p class="lead">Kill to get an item!</p>
-             <a href="/explore/hunting/<%=monster.ItemId%>/kill" class="btn btn-primary">Kill</a>
-             <a href="/assets" class="btn btn-primary">Cancel</a>
+             <button>
+                    <a href="/explore/hunting/<%=monster.ItemId%>/kill" class="btn btn-primary" onclick="alert(`you've been kill <%=monster. monsterName%> , and you got item <%= monster.item%>)">Kill</a>
+             </button> 
+             <button>
+                 <a href="/assets" class="btn btn-primary">Cancel</a>
+             </button>
          </div>
         </div>
       
     </header>  
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

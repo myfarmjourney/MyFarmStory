@@ -27,44 +27,41 @@ class marketController {
             include: [Item]
         })
             .then((market) => {
-                Asset.create({
+                return Asset.create({
                     ItemId: market.ItemId,
-                    UserId: 1 //req.session.user.id
+                    UserId: req.session.user.id
                 })
-                    .then((newAsset) => {
-                        market.status = "Sold"
-                        return market.save()
-                    })
-                    .then(() => {
-                        User.findOne({
-                            where: {
-                                id: 1 //session user id
-                            },
-                            include: [{
-                                model: Item,
-                                where: {
-                                    id: market.ItemId
-                                }
-                            }]
-                        })
-                            .then((assets) => {
-                                let money = calculateMoney(assets.money, assets.Items[0].jual, "buy")
-                                assets.money = money
-                                return assets.save()
-                            })
-                            .then(() => {
-                                res.redirect('/market')
-                            })
-                            .catch((err) => {
-                                res.send(err)
-                            })
-
-                    })
-
+            .then((newAsset) => {
+                market.status = "Sold"
+                return market.save()
+            })
+            .then(() => {
+                return User.findOne({
+                    where: {
+                        id: req.session.user.id
+                    },
+                    include: [{
+                        model: Item,
+                        where: {
+                            id: market.ItemId
+                        }
+                    }]
+                })
+            .then((assets) => {
+                let money = calculateMoney(assets.money, assets.Items[0].jual, "buy")
+                assets.money = money
+                return assets.save()
+            })
+            .then(() => {
+                res.redirect('/market')
             })
             .catch((err) => {
                 res.send(err)
             })
+
+            })
+
+        })
 
     }
 }
