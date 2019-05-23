@@ -67,6 +67,14 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+
+  User.prototype.getAge = function() {
+    let now = new Date().getFullYear()
+    // let birthday = new Date (this.birthday).getFullYear()
+    let birthday = this.birthday.split('-')
+console.log (now,birthday,this.birthday)
+    return now - birthday[0]
+  }
   User.associate = function(models) {
     User.belongsToMany(models.Item,{
       through: models.Asset,

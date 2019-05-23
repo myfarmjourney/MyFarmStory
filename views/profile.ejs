@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Signika&display=swap" rel="stylesheet">
+
+    <style>
+    body{
+        text-align: center
+    }   
+    h1{
+        font-family: 'Signika',sans-serif;
+        font-size: 40px;
+    }
+    li{
+        list-style-type: none;
+        font-size: 20px;
+    }
+    img{
+        margin-right: 10px
+    }
+    </style>
+    <title>My Farm Story</title>
+</head>
+<body>
+    <h1 style="font-size: 70px">profile user</h2>
+
+<div class="card">
+        <img src="/images/img_2.jpg"  style="width:10%; margin-top: -4%">
+        <h1><%= user.name %></h1>
+        <ul>
+            <li> <img src="https://img.icons8.com/cotton/20/000000/contact-card.png"><%= user.id %></li>
+            <li> <img src="https://img.icons8.com/ios/20/000000/name.png"><%= user.username %></li>
+            <li> <img src="https://img.icons8.com/cotton/20/000000/important-mail.png"><%= user.email %></li>
+            <li> <img src="https://img.icons8.com/dusk/20/000000/cheap-2.png"> <%= user.money %></li>
+            <li> <img src="https://img.icons8.com/cool-color/20/000000/calendar-11.png"><%= user.birthday %></li>
+            <li> <img src="https://img.icons8.com/office/20/000000/birthday-cake.png"><%= user.age %></li>
+            <li> <a href="/assets"><img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Flocalhost%3A3000%2Fassets%2Fprofile&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="qr code" style="width: 100px"/></a></li>
+        </ul>
+      </div>
+</body>
+</html>

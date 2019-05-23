@@ -9,19 +9,24 @@ const session = require('express-session')
 const {checkSession} = require('./middleware/index')
 
 app.use(session({secret: 'bertanisetiaphari', cookie : {}}))
+app.use(express.static("public"))
+
 
 app.use(express.urlencoded({
     extended: false
 }))
 
+
+
 app.use('/users',User) 
-//dikasih kondisi login 
 app.use('/assets',checkSession,assetsRouter)
 app.use('/explore',checkSession,monsterRouter)
 app.use('/market',checkSession,marketRouter)
-
 app.use('/index',(req,res)=>{
     res.render('index.ejs')
+})
+app.use ('/',(req,res)=> {
+    res.render("welcomePage.ejs")
 })
 app.use('/*',(req,res)=>{
     res.send('404 not found')
