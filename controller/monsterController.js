@@ -1,5 +1,6 @@
 const {Monster,Item,Asset} = require('../models')
 let {randMonster} = require('../helper/randomMonster')
+const session = require('express-session')
 
 class monsterController{
     static showMonster(req,res){
@@ -16,7 +17,6 @@ class monsterController{
     static hunting(req,res){
         let monsterId = randMonster()
         res.render('explore.ejs',{monsterid : monsterId})
-        
     }
 
     static getMonster(req,res){
@@ -35,23 +35,21 @@ class monsterController{
 
     static killMonster(req,res){
         let id = req.params.id
+        console.log (req.session)
         Asset.create({
             ItemId : Number(id),
-            UserId : 1 //req.session.user.id
+            UserId : req.session.user.id
         })
         .then((asset)=>{
-            Item.findOne({
+            return Item.findOne({
                 where:{
                     id: Number(id)
                 }
             })
-            .then((item)=>{
-                res.send(`congrats you get ${item.itemName} item!`)
-                // res.send(item)
-            })
-            .catch((err)=>{
-                res.send(err)
-            })
+        .then((item)=>{
+            res.send(`congrats you get ${item.itemName} item!`)
+            // res.send(item)
+        })
         })
         .catch((err)=>{
             res.send(err)

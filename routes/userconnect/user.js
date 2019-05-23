@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const User = require('../../models').User
+const userController = require('../../controller/userController')
 
 router.get('/',(req,res)=> {
     console.log (req.body)
@@ -8,12 +9,21 @@ router.get('/',(req,res)=> {
 
 router.get('/login',(req,res)=> {
     // res.send('masuk di user login')
-    res.redirect('/')
+    res.redirect('/assets')
+    res.redirect('/') //--awal
     // res.render('home.ejs')
 })
-router.post('/login',(req,res)=> {
-    res.send('asiyaaaapppp')
-})
+router.post('/login',userController.login)
+router.get ('/logout',userController.logout)
+// router.post('/login',(req,res)=> {
+
+//     let username = req.body.username
+//     console.log (username)
+
+//     console.log ("masuk buat login")
+//     res.send('asiyaaaapppp')
+//     // res.redirect('/assets')
+// })
 
 
 router.get('/register',(req,res)=> {
@@ -31,7 +41,7 @@ router.post('/register',(req,res)=> {
         email :req.body.email
     })
     .then (()=> {
-        res.redirect('/')
+        res.redirect('/index')
     })
     .catch(err=> {
         res.send(err)
