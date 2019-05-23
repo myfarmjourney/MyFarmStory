@@ -18,18 +18,19 @@ module.exports = {
    
    monsterData.forEach((monster,i)=>{
      monster = monster.split(',')
-     insert.push({
-       monsterName : monster[1],
-       attribute :monster[2],
-       location : monster[3],
-       dropItem : monster[4],
-       createdAt :new Date(),
-       updatedAt : new Date()
-     })
+       insert.push({
+         monsterName : monster[1],
+         attribute :monster[2],
+         location : monster[3],
+         ItemId : Number(monster[4]),
+         createdAt :new Date(),
+         updatedAt : new Date()
+       })
+       console.log(monster)
    })
+// console.log(insert);
 
-   console.log (insert)
-  // return queryInterface.bulkInsert('Monsters',insert,{})
+  return queryInterface.bulkInsert('Monsters',insert,{})
   },
 
   down: (queryInterface, Sequelize) => {
