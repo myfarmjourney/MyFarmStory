@@ -5,19 +5,15 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<!--     
+    
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous"
-        /> -->
+        />
     </head>
     <%- include ./partials/styleHeader%>
-
-
-
-
     <body>
     <%- include ./partials/navbar %>
         <div class="container">
@@ -37,24 +33,23 @@
                         <%datas.forEach(data => { %>
                             <tr>
                                 <th scope="row"><%= data.id%></th>
-                                <td><%= data.itemName%></td>
-                                <td><%= data.kategori%></td>
-                                <td><%= data.jual%></td>
-                                <td><a href="/assets/<%=data.id%>/sell" class="btn btn-primary">Sell</a></td>
+                                <td><%= data.Item.itemName%></td>
+                                <td><%= data.Item.kategori%></td>
+                                <td><%= data.Item.beli%></td>
+                                <%if(data.status == "available"){%>
+                                <td><a href="/market/<%=data.id%>/buy" class="btn btn-primary">Buy</a></td>
+                                <%}else{%>
+                                    <td>Sold</td>
+                                <%}%>
                             </tr>
                         <% });%>
-
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-
-
-
-
-        <!-- <script
+        <script
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"
@@ -68,6 +63,6 @@
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"
-        ></script> -->
+        ></script>
     </body>
 </html>

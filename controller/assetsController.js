@@ -15,6 +15,7 @@ class assetsController {
             include: [Item]
         })
             .then((assets) => {
+
                 console.log ('sampai sini')
                 console.log (assets.Items.length)
                 res.render('assetTable.ejs', { asset: assets.Items })
@@ -39,7 +40,7 @@ class assetsController {
             }]
         })
             .then((assets) => {
-                let money = calculateMoney(assets.money, assets.Items[0].jual)
+                let money = calculateMoney(assets.money, assets.Items[0].jual,"sell")
                 assets.money = money
                 return assets.save() //update money
                 // res.send(assets)
