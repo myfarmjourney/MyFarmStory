@@ -1,6 +1,7 @@
 const {Monster,Item,Asset} = require('../models')
 let {randMonster} = require('../helper/randomMonster')
 const session = require('express-session')
+// import swal from 'sweetalert'
 
 class monsterController{
     static hunting(req,res){
@@ -37,6 +38,7 @@ class monsterController{
             })
         .then((item)=>{
             res.send(`congrats you get ${item.itemName} item!`)
+            res.redirect('/assets')
             // res.send(item)
         })
         })

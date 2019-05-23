@@ -2,31 +2,54 @@
 <html>
 
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Satisfy&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet"> 
+    <%- include ./partials/styleHeader %>
+    <%-include ./partials/indexstyle %>
+    <style>
+    body {
+        background-image:url("/images/img_1_2.jpg") ;
+        background-size: 70%;
+        background-repeat: no-repeat;
+        background-position-y: 20%;
+        background-position-x: 75%;
+    }
+    </style>
     <title>MyFarmStory</title>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
-  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"> -->
-
-    <%- include ./partials/styleHeader%>
 </head>
 
 <body>
-	 <%- include ./partials/navbar %>
+     <%- include ./partials/navbar %>
+
 
      <h1> WELCOME to My Farm Story</h1>
 
-     <h4>login here</h4>
-     <form action="/users/login" method="POST"> 
-         <h3> Username :</h3>
-         <input type="text" name="username">
-         <h3> Password :</h3>
-         <input type="password" name="password">
-         <br>
-         <button type="submit"> login </button>
-         <br>
-         <h5> don`t have an account ? </h5> 
-         <h6> <a href="/users/register"> register here</a> </h6>
-     </form>
+     <!-- <h4>login here</h4> -->
+     
+
+     <div class="body"></div>
+		<div class="grad"></div>
+		<div class="header">
+			<!-- <div><b><span> My Farm Story</span></b></div> -->
+		</div>
+        <form action="/users/login" method="POST"> 
+            <div class="login">
+               <div class="hatiga"><h3> Username :</h3></div>
+               <input type="text" name="username">
+               <div class="hatiga"> <h3> Password :</h3> </div>
+               <input type="password" name="password">
+               <br>
+               <button type="submit"> login </button>
+               <br>
+               <h5> don`t have an account ? </h5> 
+               <h6> <a href="/users/register"> register here</a> </h6>
+            </div>
+        </form>
+		<!-- <div class="login">
+				<input type="text" placeholder="username" name="user"><br>
+				<input type="password" placeholder="password" name="password"><br>
+				<input type="button" value="">
+		</div> -->
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 </body>

@@ -46,6 +46,7 @@ class marketController {
                     include: [{
                         model: Item,
                         where: {
+
                               id: market.ItemId
                         }
                     }]
@@ -62,6 +63,10 @@ class marketController {
             .catch((err) => {
                 res.send(err)
             })
+
+            })
+
+        })
 
     }
 }

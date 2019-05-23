@@ -70,6 +70,25 @@ class assetsController {
                 res.send(err)
             })
     }
+
+    static showProfile (req,res){
+        // console.log (req.session.user,'iniiiii')
+        User.findOne ({
+            where :{
+                username : req.session.user.username
+            }
+        })
+            .then (user=> {
+                // console.log  (user.getAge())
+                user.age = user.getAge()
+                res.render('profile.ejs',{
+                    user
+                })
+            })
+            .catch(err=> {
+                res.redirect('/assets')
+            })
+    }
 }
 
 module.exports = assetsController
