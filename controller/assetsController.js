@@ -6,7 +6,7 @@ class assetsController {
     static showAssets(req, res) {
         console.log ('masuk sinii di aset')
         // res.send('ahaaa')
-        console.log (req.session.user, 'ini username dari sesion diaset')
+        console.log (req.session, 'ini username dari sesion diaset')
         User.findOne({
             where: {
                 // id :5
@@ -40,7 +40,7 @@ class assetsController {
             }]
         })
             .then((assets) => {
-                let money = calculateMoney(assets.money, assets.Items[0].jual,"sell")
+                let money = calculateMoney(assets.money, assets.Items[0].beli,"sell")
                 assets.money = money
                 return assets.save() //update money
                 // res.send(assets)

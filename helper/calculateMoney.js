@@ -8,6 +8,7 @@ function calculateMoney(money,price,action){
         return money
     }else if(action == "buy"){
         money -= price
+        console.log(money);
         return money
     }
     

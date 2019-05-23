@@ -20,17 +20,20 @@ class marketController {
 
     static buyItem(req, res) {
         let id = req.params.id
+        let market 
         Market.findOne({
             where: {
                 id: Number(id)
             },
             include: [Item]
         })
-            .then((market) => {
+            .then((newmarket) => {
+                market = newmarket
                 return Asset.create({
                     ItemId: market.ItemId,
                     UserId: req.session.user.id
                 })
+            })
             .then((newAsset) => {
                 market.status = "Sold"
                 return market.save()
@@ -43,17 +46,19 @@ class marketController {
                     include: [{
                         model: Item,
                         where: {
-                            id: market.ItemId
+
+                              id: market.ItemId
                         }
                     }]
                 })
+            })
             .then((assets) => {
                 let money = calculateMoney(assets.money, assets.Items[0].jual, "buy")
-                assets.money = money
-                return assets.save()
+                    assets.money = money
+                        return assets.save()
             })
             .then(() => {
-                res.redirect('/market')
+                    res.redirect('/market')
             })
             .catch((err) => {
                 res.send(err)

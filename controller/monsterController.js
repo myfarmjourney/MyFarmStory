@@ -4,17 +4,6 @@ const session = require('express-session')
 // import swal from 'sweetalert'
 
 class monsterController{
-    static showMonster(req,res){
-        Monster.findAll()
-        .then((monsters)=>{
-            res.send(monsters)
-            //res.render('allmonster.ejs',{datas: monsters, title: "all monsters"})
-        })
-        .catch((err)=>{
-
-        })
-    }
-
     static hunting(req,res){
         let monsterId = randMonster()
         res.render('explore.ejs',{monsterid : monsterId})
