@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 const User = require('./routes/userconnect/user')
 const monsterRouter = require('./routes/monsterRouter')
 const assetsRouter = require('./routes/assetsRouter')
