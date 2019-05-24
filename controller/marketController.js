@@ -64,11 +64,8 @@ class marketController {
                 res.send(err)
             })
 
-            })
+            }
 
-        })
-
-    }
 }
 
 module.exports = marketController
