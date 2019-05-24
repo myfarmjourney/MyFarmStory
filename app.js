@@ -26,6 +26,9 @@ app.use('/assets',checkSession,assetsRouter)
 app.use('/explore',checkSession,monsterRouter)
 app.use('/market',checkSession,marketRouter)
 app.use('/myfarm',checkSession,farmRouter)
+app.get('/this',(req,res)=> {
+    res.render('profile.ejs')
+})
 
 app.use('/index',(req,res)=>{
     res.render('index.ejs')
