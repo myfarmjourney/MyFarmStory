@@ -27,7 +27,7 @@
             font-weight: 300;
             line-height:1em;
             text-align: center;
-            color: #4DC3FA;
+            color: rgb(12, 114, 92);
         }
 
         /* // table  */
@@ -35,7 +35,7 @@
             font-weight: bold;
             font-size: 1em;
             text-align: left;
-            color: #185875;
+            color: rgb(36, 98, 93);
         }
 
         .container td {
@@ -126,7 +126,7 @@
             </div>
         </div> -->
 
-        <table class="container">
+        <table class="container" style="background-color:hsla(159,68%,35%,.5); color: white">
                 <thead>
                     <tr>
                         <th><h1>No</h1></th>
@@ -144,7 +144,7 @@
                                 <td><%= data.itemName%></td>
                                 <td><%= data.kategori%></td>
                                 <td><%= data.jual%></td>
-                                <td><a href="/assets/<%=data.id%>/sell" class="btn btn-primary">Sell</a></td>
+                                <td><a style="color:orangered" href="/assets/<%=data.id%>/sell" class="btn btn-primary">Sell</a></td>
                             </tr>
                         <% });%>
                 </tbody>

@@ -5,13 +5,13 @@ const { getHarvested } = require('../helper/getHarvested')
 class FarmController {
     static showFarm(req, res) {
         console.log('ini GET');
-
+// res.send('semampunya')
         const Op = Sequelize.Op
         let farms
-        Farm.findAll({
-            include: [Item]
-        })
+        Farm.findAll()
+        // User.findAll()
             .then(((datas) => {
+                // res.send(datas)
                 farms = datas
                 return User.findOne({
                     where: {
