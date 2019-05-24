@@ -8,7 +8,9 @@ class FarmController {
 // res.send('semampunya')
         const Op = Sequelize.Op
         let farms
-        Farm.findAll()
+        Farm.findAll({
+            include: [Item]
+        })
         // User.findAll()
             .then(((datas) => {
                 // res.send(datas)
@@ -27,6 +29,9 @@ class FarmController {
 
             }))
             .then((items) => {
+                // console.log (farms)
+                // console.log (items)
+                // res.send(farms)
                 res.render('myfarm.ejs', {
                     farms,
                     items
